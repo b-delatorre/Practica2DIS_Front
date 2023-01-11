@@ -8,7 +8,7 @@ import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 
 public class APIMenor {
-    private static final String fullUrl = "localhost:8080/covidmenor";
+    private static final String fullUrl = "localhost:8090/covidmenor";
     public String getCovidMenor() throws URISyntaxException, IOException,
             InterruptedException {
         HttpRequest request = HttpRequest.newBuilder()
@@ -22,4 +22,5 @@ public class APIMenor {
         System.out.println(response.body());
         return response.body();
     }
+
 }

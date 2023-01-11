@@ -8,7 +8,7 @@ import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 
 public class APIMayor {
-    private static final String fullUrl = "localhost:8080/covidmayor";
+    private static final String fullUrl = "localhost:8090/covidmayor";
     public String getCovidMayor() throws URISyntaxException, IOException,
             InterruptedException {
         HttpRequest request = HttpRequest.newBuilder()
@@ -22,7 +22,8 @@ public class APIMayor {
         System.out.println(response.body());
         return response.body();
     }
-    public String getPokemonPorTipo(String tipo) throws URISyntaxException, IOException,
+
+    /*public String getPokemonPorTipo(String tipo) throws URISyntaxException, IOException,
             InterruptedException {       String fullUrl = String.format(urlPref
             HttpRequest request = HttpRequest.newBuilder()
                     .uri(new URI(fullUrl))
@@ -30,6 +31,6 @@ public class APIMayor {
         HttpResponse<String> response = HttpClient
                 .newBuilder()               .build()               .send(request, HttpResponse.BodyHandlers.ofString());
         System.out.println(response.body());
-        return response.body();   }
+        return response.body();   }*/
 
 }
