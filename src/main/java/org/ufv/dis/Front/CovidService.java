@@ -22,7 +22,7 @@ public class CovidService implements Serializable {
         String resultsAPI=api.getCovidMayor();
         Gson gson=new Gson();
         Covid19Mayor covid19Mayor=gson.fromJson(resultsAPI,new TypeToken<Covid19Mayor>(){}.getType());
-        ArrayList<DataMayor> datos_mayores= (ArrayList<DataMayor>) covid19Mayor.getData();
+        ArrayList<DataMayor> datos_mayores= covid19Mayor.getData();
         return datos_mayores;
     }
 }

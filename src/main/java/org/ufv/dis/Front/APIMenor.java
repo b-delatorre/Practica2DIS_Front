@@ -8,11 +8,9 @@ import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 
 public class APIMenor {
-    private static final String fullUrl = "localhost:8090/covidmenor";
-    public String getCovidMenor() throws URISyntaxException, IOException,
-            InterruptedException {
+    public String getCovidMenor() throws URISyntaxException, IOException, InterruptedException {
         HttpRequest request = HttpRequest.newBuilder()
-                .uri(new URI(fullUrl))
+                .uri(new URI("http://localhost:8090/covidmenor"))
                 .GET()
                 .build();
         HttpResponse<String> response = HttpClient

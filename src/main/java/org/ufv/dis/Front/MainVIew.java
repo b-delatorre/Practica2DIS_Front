@@ -2,6 +2,7 @@ package org.ufv.dis.Front;
 import com.vaadin.flow.component.combobox.ComboBox;
 import com.vaadin.flow.component.grid.Grid;
 import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
+import com.vaadin.flow.server.VaadinRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.vaadin.flow.component.Key;
@@ -13,7 +14,9 @@ import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.component.textfield.TextField;
 import com.vaadin.flow.router.Route;
 
+import java.util.ArrayList;
 import java.util.stream.Stream;
+
 
 @Route
 @CssImport("./styles/shared-styles.css")
@@ -47,8 +50,8 @@ public class MainVIew extends VerticalLayout{
                    grid.setItems(service.leeCovidMenor());
                    results.add(grid);
                 } else if (tipoPeticion.equals("Tasa acumulada poblacion mayores de 65")) {
-                    grid.setItems((Stream<Data>) service.leeCovidMayor());
-                    results.add((grid));
+                    //grid.setItems(service.leeCovidMayor());
+                    results.add(grid);
 
                 }
 
@@ -60,7 +63,5 @@ public class MainVIew extends VerticalLayout{
 
         addClassName("centered-content");
         add(inputs,boton1,results);
-
-
     }
 }

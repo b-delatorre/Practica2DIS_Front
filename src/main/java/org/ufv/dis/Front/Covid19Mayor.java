@@ -7,17 +7,17 @@ import java.util.Date;
 import java.util.List;
 
 public class Covid19Mayor {
-    List<DataMayor> data;
+    ArrayList<DataMayor> data;
 
-    public Covid19Mayor(List<DataMayor> data) {
+    public Covid19Mayor(ArrayList<DataMayor> data) {
         this.data = data;
     }
 
-    public List<DataMayor> getData() {
+    public ArrayList<DataMayor> getData() {
         return data;
     }
 
-    public void setData(List<DataMayor> data) {
+    public void setData(ArrayList<DataMayor> data) {
         this.data = data;
     }
 }
