@@ -32,13 +32,19 @@ public class MainVIew extends VerticalLayout{
         comboBox.setItems("Tasa acumulada poblacion general", "Tasa acumulada poblacion mayores de 65");
         comboBox.setHelperText("Seleccione el tipo de dato");
 
-        Grid<Data> grid= new Grid<>(Data.class,true);
-        grid.addColumn(Data::getCasos).setHeader("Casos");
-        grid.addColumn(Data::getCod).setHeader("Codigo");
-        grid.addColumn(Data::getFecha).setHeader("Fecha");
-        grid.addColumn(Data::getTasa14).setHeader("Tasa 14 dias");
-        grid.addColumn(Data::getTasaTotal).setHeader("Tasa Total");
-        grid.addColumn(Data::getZona).setHeader("Zona");
+        Grid<Data> grid_General= new Grid<>(Data.class,true);
+        grid_General.addColumn(Data::getCasos).setHeader("Casos");
+        grid_General.addColumn(Data::getCod).setHeader("Codigo");
+        grid_General.addColumn(Data::getFecha).setHeader("Fecha");
+        grid_General.addColumn(Data::getTasa14).setHeader("Tasa 14 dias");
+        grid_General.addColumn(Data::getTasaTotal).setHeader("Tasa Total");
+        grid_General.addColumn(Data::getZona).setHeader("Zona");
+        Grid<DataMayor> grid_Mayor= new Grid<>(DataMayor.class,true);
+        grid_Mayor.addColumn(DataMayor::getCasos).setHeader("Casos");
+        grid_Mayor.addColumn(DataMayor::getCod).setHeader("Codigo");
+        grid_Mayor.addColumn(DataMayor::getFecha).setHeader("Fecha");
+        grid_Mayor.addColumn(DataMayor::getTasa14).setHeader("Tasa 14 dias");
+        grid_Mayor.addColumn(DataMayor::getZona).setHeader("Zona");
         inputs.add(comboBox);
         Button boton1=new Button("Lee caracter",
         e -> {
@@ -47,11 +53,11 @@ public class MainVIew extends VerticalLayout{
             try {
                 results.removeAll();
                 if(tipoPeticion.equals("Tasa acumulada poblacion general")){
-                   grid.setItems(service.leeCovidMenor());
-                   results.add(grid);
+                   grid_General.setItems(service.leeCovidMenor());
+                   results.add(grid_General);
                 } else if (tipoPeticion.equals("Tasa acumulada poblacion mayores de 65")) {
-                    //grid.setItems(service.leeCovidMayor());
-                    results.add(grid);
+                    grid_Mayor.setItems(service.leeCovidMayor());
+                    results.add(grid_Mayor);
 
                 }
 
