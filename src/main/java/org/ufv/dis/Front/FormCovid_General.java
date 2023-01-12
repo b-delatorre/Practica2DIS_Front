@@ -34,6 +34,7 @@ public class FormCovid_General extends FormLayout {
         Cancelar.addThemeVariants(ButtonVariant.LUMO_PRIMARY);
         Cancelar.addClickShortcut(Key.ENTER);
         //add(CasosCatorce);
+        //add(zona,catorcedias,incidenciaTotal);
         //add(code,zona,catorcedias,incidenciaTotal,TotalCasos,CasosCatorce);
     }
 }
