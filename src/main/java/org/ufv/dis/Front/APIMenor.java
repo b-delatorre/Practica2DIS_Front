@@ -1,6 +1,7 @@
 package org.ufv.dis.Front;
 
 import java.io.IOException;
+
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.net.http.HttpClient;
@@ -20,5 +21,4 @@ public class APIMenor {
         System.out.println(response.body());
         return response.body();
     }
-
 }

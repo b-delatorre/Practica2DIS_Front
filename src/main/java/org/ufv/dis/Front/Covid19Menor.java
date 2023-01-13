@@ -1,9 +1,6 @@
 package org.ufv.dis.Front;
 
-import com.google.gson.annotations.SerializedName;
-
 import java.util.ArrayList;
-import java.util.Date;
 
 public class Covid19Menor {
     private ArrayList<Data> data = new ArrayList<>();

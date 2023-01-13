@@ -2,8 +2,6 @@ package org.ufv.dis.Front;
 
 import com.google.gson.annotations.SerializedName;
 
-import java.util.Date;
-
 public class Data {
     @SerializedName(value = "codigo_geometria", alternate = "cod")
     private String cod;

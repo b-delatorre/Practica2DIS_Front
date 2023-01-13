@@ -7,6 +7,7 @@ import com.vaadin.flow.component.formlayout.FormLayout;
 import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
 import com.vaadin.flow.component.textfield.TextField;
 import com.vaadin.flow.data.binder.Binder;
+import com.vaadin.flow.data.binder.ValidationException;
 
 public class FormCovid_Mayores extends FormLayout {
     private TextField cod =new TextField("codigo_geometria");
@@ -26,8 +27,12 @@ public class FormCovid_Mayores extends FormLayout {
 
         Aceptar.addThemeVariants(ButtonVariant.LUMO_PRIMARY);
         Aceptar.addClickShortcut(Key.ENTER);
+
         Cancelar.addThemeVariants(ButtonVariant.LUMO_PRIMARY);
         Cancelar.addClickShortcut(Key.ENTER);
+
+        Aceptar.addClickListener(e -> setVisible(false));
+
         HorizontalLayout botones=new HorizontalLayout(Aceptar,Cancelar);
         cod.setReadOnly(true);
         add(cod,zona, tasa14, casos,botones);
@@ -37,8 +42,6 @@ public class FormCovid_Mayores extends FormLayout {
     public void Tabla_A_FormMayores(DataMayor dataMayor) { //Si el usuario hace click en alguna de las filas entonces se muestra y se copian los datos del que esta seleccionado en el formulario
         this.dato_Mayor = dataMayor;
         binder.setBean(dataMayor);
-
         setVisible(true);
-
     }
 }

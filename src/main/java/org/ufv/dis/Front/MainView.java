@@ -1,16 +1,10 @@
 package org.ufv.dis.Front;
-import com.vaadin.flow.component.combobox.ComboBox;
 import com.vaadin.flow.component.grid.Grid;
-import com.vaadin.flow.component.html.Div;
-import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
-import com.vaadin.flow.component.tabs.Tab;
 import com.vaadin.flow.component.tabs.TabSheet;
 import com.vaadin.flow.router.PageTitle;
 import org.springframework.beans.factory.annotation.Autowired;
 
-import com.vaadin.flow.component.Key;
 import com.vaadin.flow.component.button.Button;
-import com.vaadin.flow.component.button.ButtonVariant;
 import com.vaadin.flow.component.dependency.CssImport;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.router.Route;
@@ -37,6 +31,8 @@ public class MainView extends VerticalLayout{
 
         FormCovid_General formulario_general=new FormCovid_General(this);
         FormCovid_Mayores formulario_mayores=new FormCovid_Mayores(this);
+        FormCovid_General formulario_nuevoRegistro=new FormCovid_General(this);
+
         /*ComboBox<String> comboBox=new ComboBox<>("Seleccione el tipo de info....");
         comboBox.setAllowCustomValue(false);
         comboBox.setItems("Tasa acumulada poblacion general", "Tasa acumulada poblacion mayores de 65");
@@ -57,11 +53,13 @@ public class MainView extends VerticalLayout{
         grid_Mayor.addColumn(DataMayor::getTasa14).setHeader("Tasa 14 dias");
         grid_Mayor.addColumn(DataMayor::getZona).setHeader("Zona");
 
+        Button nuevoRegistro = new Button("Nuevo registro", click -> formulario_general.setVisible(true));
+
         TabSheet Pestanas = new TabSheet(); //Creamos el TabSheet Pestanas que contendra las dos Pestañas con las dos secciones
         results_General.removeAll(); //Por si quedaba algo residual restablecemos la variable results
         grid_General.setItems(service.leeCovidMenor()); //Obtenemos los elementos del grid de la llamada de la api
         results_General.add(grid_General);
-        Content_Tab_General.add(results_General,formulario_general); //Y los añadimos a la pestaña de datos generales
+        Content_Tab_General.add(nuevoRegistro, results_General,formulario_general); //Y los añadimos a la pestaña de datos generales
         Pestanas.add("Tasa acumulada poblacion general",Content_Tab_General);
         //Repetimos lo anterior pero para los datos de personas mayores
         results_Mayores.removeAll();
@@ -98,7 +96,7 @@ public class MainView extends VerticalLayout{
             if (event.getValue() == null) {
                 formulario_general.setVisible(false);
             } else {
-                formulario_general.Tabla_A_FormGen(event.getValue());
+                formulario_general.TablaAFormGen(event.getValue());
                 Content_Tab_General.setSizeFull();
 
             }

@@ -1,4 +1,5 @@
 package org.ufv.dis.Front;
+
 import java.io.IOException;
 import java.io.Serializable;
 import java.net.URISyntaxException;
@@ -17,6 +18,7 @@ public class CovidService implements Serializable {
         ArrayList<Data> datos_general=covid19Menor.getData();
         return datos_general;
     }
+
     public ArrayList<DataMayor> leeCovidMayor() throws URISyntaxException,IOException,InterruptedException{
         APIMayor api=new APIMayor();
         String resultsAPI=api.getCovidMayor();

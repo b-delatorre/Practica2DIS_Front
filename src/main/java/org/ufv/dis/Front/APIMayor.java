@@ -1,6 +1,7 @@
 package org.ufv.dis.Front;
 
 import java.io.IOException;
+
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.net.http.HttpClient;
@@ -20,15 +21,5 @@ public class APIMayor {
         System.out.println(response.body());
         return response.body();
     }
-
-    /*public String getPokemonPorTipo(String tipo) throws URISyntaxException, IOException,
-            InterruptedException {       String fullUrl = String.format(urlPref
-            HttpRequest request = HttpRequest.newBuilder()
-                    .uri(new URI(fullUrl))
-                    .GET()               .build();
-        HttpResponse<String> response = HttpClient
-                .newBuilder()               .build()               .send(request, HttpResponse.BodyHandlers.ofString());
-        System.out.println(response.body());
-        return response.body();   }*/
 
 }
