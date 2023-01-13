@@ -15,7 +15,7 @@ public class FormCovid_Mayores extends FormLayout {
     private TextField casos =new TextField("Casos >60 años 14 dias");
 
     private Button Aceptar=new Button("Aceptar");
-    private Button Cancelar=new Button("Delete");
+    private Button Cancelar=new Button("Cancelar", e->setVisible(false));
     private MainView myUI;
     private DataMayor dato_Mayor;
     private Binder<DataMayor> binder=new Binder<>(DataMayor.class);
@@ -29,6 +29,7 @@ public class FormCovid_Mayores extends FormLayout {
         Cancelar.addThemeVariants(ButtonVariant.LUMO_PRIMARY);
         Cancelar.addClickShortcut(Key.ENTER);
         HorizontalLayout botones=new HorizontalLayout(Aceptar,Cancelar);
+        cod.setReadOnly(true);
         add(cod,zona, tasa14, casos,botones);
 
         binder.bindInstanceFields(this);

@@ -4,6 +4,7 @@ package org.ufv.dis.Front;
 import com.vaadin.flow.component.Key;
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.button.ButtonVariant;
+import com.vaadin.flow.component.datepicker.DatePicker;
 import com.vaadin.flow.component.formlayout.FormLayout;
 import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
 import com.vaadin.flow.component.textfield.TextField;
@@ -17,7 +18,7 @@ public class FormCovid_General extends FormLayout {
     private TextField casos =new TextField("Total_Casos");
 
     private Button Aceptar=new Button("Aceptar");
-    private Button Cancelar=new Button("Cancelar");
+    private Button Cancelar=new Button("Cancelar", e->setVisible(false));
     private MainView myUI;
     private Data dato_General;
     private Binder<Data> binder=new Binder<>(Data.class);
@@ -26,6 +27,7 @@ public class FormCovid_General extends FormLayout {
 
         this.myUI=myUI;
         setSizeUndefined();
+        cod.setReadOnly(true);
         add(cod,zona, tasa14);
 
         Aceptar.addThemeVariants(ButtonVariant.LUMO_PRIMARY);
