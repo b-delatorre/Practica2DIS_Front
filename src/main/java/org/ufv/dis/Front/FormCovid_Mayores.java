@@ -1,29 +1,24 @@
 package org.ufv.dis.Front;
 
 import com.vaadin.flow.component.Key;
-import com.vaadin.flow.component.*;
+import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.button.ButtonVariant;
 import com.vaadin.flow.component.formlayout.FormLayout;
 import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
-
-import java.awt.*;
-import java.text.DateFormat;
-import java.util.Date;
-import javax.swing.JTextField;
-import javax.swing.JLabel;
-import com.vaadin.flow.component.button.Button;
-import com.vaadin.flow.component.button.ButtonVariant;
+import com.vaadin.flow.component.textfield.TextField;
+import com.vaadin.flow.data.binder.Binder;
 
 public class FormCovid_Mayores extends FormLayout {
-    private TextField code=new TextField("codigo_geometria");
+    private TextField cod =new TextField("codigo_geometria");
     private TextField zona=new TextField("zona_basica_salud");
-    private TextField catorcedias=new TextField("Incidencia_14_dias");
-    private TextField incidenciaTotal=new TextField("Incidencia_Total");
-    private TextField TotalCasos=new TextField("Total_Casos");
-    private TextField CasosCatorce=new TextField("Casos_14_dias");
+    private TextField tasa14 =new TextField("Incidencia >60 años 14_dias");
+    private TextField casos =new TextField("Casos >60 años 14 dias");
+
     private Button Aceptar=new Button("Aceptar");
     private Button Cancelar=new Button("Delete");
     private MainView myUI;
+    private DataMayor dato_Mayor;
+    private Binder<DataMayor> binder=new Binder<>(DataMayor.class);
 
     public FormCovid_Mayores(MainView myUI){
         this.myUI=myUI;
@@ -33,7 +28,16 @@ public class FormCovid_Mayores extends FormLayout {
         Aceptar.addClickShortcut(Key.ENTER);
         Cancelar.addThemeVariants(ButtonVariant.LUMO_PRIMARY);
         Cancelar.addClickShortcut(Key.ENTER);
-        //add(CasosCatorce);
-        //add(code,zona,catorcedias,incidenciaTotal,TotalCasos,CasosCatorce);
+        HorizontalLayout botones=new HorizontalLayout(Aceptar,Cancelar);
+        add(cod,zona, tasa14, casos,botones);
+
+        binder.bindInstanceFields(this);
+    }
+    public void Tabla_A_FormMayores(DataMayor dataMayor) { //Si el usuario hace click en alguna de las filas entonces se muestra y se copian los datos del que esta seleccionado en el formulario
+        this.dato_Mayor = dataMayor;
+        binder.setBean(dataMayor);
+
+        setVisible(true);
+
     }
 }
